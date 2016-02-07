@@ -2,6 +2,7 @@
 <resources>
     <color name = "dark_blue">#1A237E</color>
     <color name = "dark_green">#388e3c</color>
+    <color name = "dark_blue_primary">#0288D1</color>
     <color name = "dark_red">#C62828</color>
-    <color name = "green">#4caf50</color>
+    <color name = "blue">#03A9F4</color>
 </resources>

@@ -24,7 +24,7 @@ public class MainActivity extends ViewPagerWithTabsActivity {
 
         return new ViewPagerHandler(this)
                 .addPage(R.string.title_root_info,
-                        RootInfoFragment.newInstance("Root Info"))
+                        SIMInfoFragment.newInstance("Root Info"))
                 .addPage(R.string.title_build_info,
                         BuildInfoFragment.newInstance("Build Info"))
                 .addPage(R.string.title_about_root,

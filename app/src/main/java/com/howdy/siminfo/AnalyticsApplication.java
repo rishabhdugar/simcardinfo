@@ -12,7 +12,7 @@ import java.util.HashMap;
  * Created by jiteshdugar on 29/12/15.
  */
 public class AnalyticsApplication extends Application {
-    private static final String PROPERTY_ID = "UA-71837612-4";
+    private static final String PROPERTY_ID = "UA-71837612-6";
     public enum TrackerName {
         APP_TRACKER,
         GLOBAL_TRACKER,

@@ -10,12 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-
-import java.io.File;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,7 +19,7 @@ import butterknife.ButterKnife;
 /**
  * Created by rishabh on 31/12/15.
  */
-public class RootInfoFragment extends Fragment {
+public class SIMInfoFragment extends Fragment {
     @Bind(R.id.is_root)TextView root_text;
     @Bind(R.id.is_root_available)TextView t1;
     @Bind(R.id.super_user_text)TextView su_text;
@@ -33,11 +29,11 @@ public class RootInfoFragment extends Fragment {
     private static final String ARG_TEXT = "text";
     private Tracker mTracker;
 
-    public RootInfoFragment() {
+    public SIMInfoFragment() {
     }
 
-    public static RootInfoFragment newInstance(String text) {
-        RootInfoFragment fragment = new RootInfoFragment();
+    public static SIMInfoFragment newInstance(String text) {
+        SIMInfoFragment fragment = new SIMInfoFragment();
         Bundle bundle = new Bundle();
         bundle.putString(ARG_TEXT, text);
         fragment.setArguments(bundle);
@@ -51,16 +47,17 @@ public class RootInfoFragment extends Fragment {
         /*Google Analytics: send screen Name*/
 
         // Obtain the shared Tracker instance.
-      /*  AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
+        AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
         mTracker = application.getTracker(AnalyticsApplication.TrackerName.APP_TRACKER);
 
         // Send a screen view.
-        mTracker.setScreenName("Root Info");
+        mTracker.setScreenName("SIM Info");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         mTracker.send(new HitBuilders.ScreenViewBuilder()
-                .set("RootInfo", "Root Info")
+                .set("SIMInfo", "SIM Info")
                 .build());
 
+        /*
         AdView mAdView = (AdView) view.findViewById(R.id.adView1);
 
         AdRequest adRequest = new AdRequest.Builder().build();

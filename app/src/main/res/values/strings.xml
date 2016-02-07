@@ -11,7 +11,7 @@
 
 
     <style name="AppTheme1" parent="@style/MaterialDesignLibraryTheme.Light">
-        <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryDark">@color/dark_green</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/dark_blue_primary</item>
     </style>
 </resources>

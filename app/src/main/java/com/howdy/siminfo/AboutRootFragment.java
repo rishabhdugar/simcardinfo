@@ -33,16 +33,17 @@ public class AboutRootFragment extends Fragment {
 
         /*Google Analytics: send screen Name*/
 
-        // Obtain the shared Tracker instance.
-     /*   AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
+        //Obtain the shared Tracker instance.
+        AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
         mTracker = application.getTracker(AnalyticsApplication.TrackerName.APP_TRACKER);
 
         // Send a screen view.
-        mTracker.setScreenName("About Root");
+        mTracker.setScreenName("SIM Info");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         mTracker.send(new HitBuilders.ScreenViewBuilder()
-                .set("AboutRoot", "About Root")
+                .set("SIMInfo", "SIM Info")
                 .build());
+        /*
 
         AdView mAdView = (AdView) view.findViewById(R.id.adView3);
 
