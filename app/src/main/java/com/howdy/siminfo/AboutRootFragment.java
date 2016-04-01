@@ -43,13 +43,12 @@ public class AboutRootFragment extends Fragment {
         mTracker.send(new HitBuilders.ScreenViewBuilder()
                 .set("SIMInfo", "SIM Info")
                 .build());
-        /*
 
         AdView mAdView = (AdView) view.findViewById(R.id.adView3);
 
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        mAdView.loadAd(adRequest);*/
+        mAdView.loadAd(adRequest);
 
 
         return view;

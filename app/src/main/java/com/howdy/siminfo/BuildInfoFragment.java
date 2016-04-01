@@ -66,7 +66,7 @@ public class BuildInfoFragment extends Fragment {
         /*Google Analytics: send screen Name*/
 
         // Obtain the shared Tracker instance.
-    /*    AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
+         AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
         mTracker = application.getTracker(AnalyticsApplication.TrackerName.APP_TRACKER);
 
         // Send a screen view.
@@ -80,7 +80,7 @@ public class BuildInfoFragment extends Fragment {
 
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        mAdView.loadAd(adRequest);*/
+        mAdView.loadAd(adRequest);
         Log.d("on detail create view", Build.BOARD);
         //GENERAL
         ButterKnife.bind(this, view);

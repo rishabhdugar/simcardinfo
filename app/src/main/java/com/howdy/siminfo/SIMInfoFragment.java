@@ -26,6 +26,10 @@ public class SIMInfoFragment extends Fragment {
     @Bind(R.id.is_su_found)TextView t2;
     @Bind(R.id.is_busy_box_installed)TextView t3;
     @Bind(R.id.path)TextView t4;
+    @Bind(R.id.voicemail_tag)TextView voicemail;
+    @Bind(R.id.sim_serial)TextView sim_serial;
+    @Bind(R.id.device_id)TextView device_id;
+    @Bind(R.id.device_software_version)TextView device_software_version;
     private static final String ARG_TEXT = "text";
     private Tracker mTracker;
 
@@ -42,7 +46,7 @@ public class SIMInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.root_info, container, false);
+        View view =  inflater.inflate(R.layout.sim_info, container, false);
 
         /*Google Analytics: send screen Name*/
 
@@ -73,6 +77,10 @@ public class SIMInfoFragment extends Fragment {
         t2.setText(manager.getNetworkOperatorName());
         t3.setText(manager.getSimOperatorName());
         t4.setText(String.valueOf(manager.isNetworkRoaming()));
+        device_id.setText(manager.getDeviceId());
+        voicemail.setText(manager.getVoiceMailAlphaTag());
+        device_software_version.setText(manager.getDeviceSoftwareVersion());
+        sim_serial.setText(manager.getSimSerialNumber());
         return view;
     }
 }

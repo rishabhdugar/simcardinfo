@@ -1,36 +1,70 @@
 package com.howdy.siminfo;
 
+import android.app.Fragment;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.blunderer.materialdesignlibrary.activities.ViewPagerWithTabsActivity;
-import com.blunderer.materialdesignlibrary.handlers.ActionBarHandler;
-import com.blunderer.materialdesignlibrary.handlers.ViewPagerHandler;
+import butterknife.ButterKnife;
 
-public class MainActivity extends ViewPagerWithTabsActivity {
+public class MainActivity extends AppCompatActivity {
 
     private boolean doubleBackToExitPressedOnce=false;
 
     @Override
-    protected boolean expandTabs() {
-        return false;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tabanim_toolbar);
+        setSupportActionBar(toolbar);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.tabanim_viewpager);
+        setupViewPager(viewPager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabanim_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new SIMInfoFragment(), "SIM Info");
+        adapter.addFrag(new BuildInfoFragment(), "Build Info");
+        viewPager.setAdapter(adapter);
     }
 
     @Override
-    public ViewPagerHandler getViewPagerHandler() {
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+            startActivity(intent);
+            finish();
+            System.exit(0);
 
-        return new ViewPagerHandler(this)
-                .addPage(R.string.title_root_info,
-                        SIMInfoFragment.newInstance("Root Info"))
-                .addPage(R.string.title_build_info,
-                        BuildInfoFragment.newInstance("Build Info"))
-                .addPage(R.string.title_about_root,
-                        AboutRootFragment.newInstance("About Root"));
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
-
 
 
     @Override
@@ -58,58 +92,16 @@ public class MainActivity extends ViewPagerWithTabsActivity {
             return true;
         }
         if(id==R.id.action_share){
-            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             String shareBody = getString(R.string.share_text);
-            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
-            sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
 
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected boolean enableActionBarShadow() {
-        return false;
-    }
-
-    @Override
-    protected ActionBarHandler getActionBarHandler() {
-        return null;
-    }
-
-
-
-    @Override
-    public int defaultViewPagerPageSelectedPosition() {
-        return 0;
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-            startActivity(intent);
-            finish();
-            System.exit(0);
-
-            return;
-        }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
     }
 
 }
