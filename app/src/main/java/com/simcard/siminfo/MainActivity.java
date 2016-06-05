@@ -1,4 +1,4 @@
-package com.howdy.siminfo;
+package com.simcard.siminfo;
 
 import android.app.Fragment;
 import android.content.Intent;

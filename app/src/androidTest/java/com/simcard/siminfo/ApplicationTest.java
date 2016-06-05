@@ -1,4 +1,4 @@
-package com.howdy.siminfo;
+package com.simcard.siminfo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

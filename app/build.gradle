@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.howdy.siminfo"
+        applicationId "com.simcard.siminfo"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -26,6 +26,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.google.android.gms:play-services-analytics:8.3.0'
-    compile 'com.google.android.gms:play-services-ads:8.3.0'
+    //compile 'com.google.android.gms:play-services-ads:8.3.0'
 
 }

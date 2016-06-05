@@ -1,4 +1,4 @@
-package com.howdy.siminfo;
+package com.simcard.siminfo;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
@@ -76,11 +76,11 @@ public class BuildInfoFragment extends Fragment {
                 .set("BuildInfo", "Build Info")
                 .build());
 
-        AdView mAdView = (AdView) view.findViewById(R.id.adView2);
+        /*AdView mAdView = (AdView) view.findViewById(R.id.adView2);
 
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
         Log.d("on detail create view", Build.BOARD);
         //GENERAL
         ButterKnife.bind(this, view);

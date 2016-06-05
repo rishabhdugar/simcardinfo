@@ -524,7 +524,7 @@
     </LinearLayout>
 
     </ScrollView>
-    <com.google.android.gms.ads.AdView
+    <!--com.google.android.gms.ads.AdView
         android:id="@+id/adView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -532,5 +532,5 @@
         ads:adUnitId="@string/banner_ad_unit_id"
         android:foregroundGravity="bottom"
         android:layout_gravity="center_horizontal|bottom">
-    </com.google.android.gms.ads.AdView>
+    </com.google.android.gms.ads.AdView-->
 </FrameLayout>

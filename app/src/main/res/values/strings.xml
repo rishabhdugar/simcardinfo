@@ -6,7 +6,7 @@
     <string name="title_build_info">DEVICE</string>
     <string name="title_about_root">About Root</string>
     <string name="share">share</string>
-    <string name="share_text">Hey, I found an app that lets me check my SIM Card Info and much more. Try this awesome app - https://play.google.com/store/apps/details?id=com.howdy.siminfo</string><string name="share_subject" />
+    <string name="share_text">Hey, I found an app that lets me check my SIM Card Info and much more. Try this awesome app - https://play.google.com/store/apps/details?id=com.simcard.siminfo</string><string name="share_subject" />
     <string name="banner_ad_unit_id">ca-app-pub-6553884734105254/8657166655</string>
 
 

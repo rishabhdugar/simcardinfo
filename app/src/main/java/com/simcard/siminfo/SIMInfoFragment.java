@@ -1,4 +1,4 @@
-package com.howdy.siminfo;
+package com.simcard.siminfo;
 
 import android.content.Context;
 import android.os.Bundle;
