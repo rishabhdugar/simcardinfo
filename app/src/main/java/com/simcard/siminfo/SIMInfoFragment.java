@@ -83,5 +83,6 @@ public class SIMInfoFragment extends Fragment {
         sim_serial.setText(manager.getSimSerialNumber());
         return view;
     }
+
 }
 

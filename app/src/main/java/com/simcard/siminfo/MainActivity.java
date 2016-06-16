@@ -1,23 +1,32 @@
 package com.simcard.siminfo;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import butterknife.ButterKnife;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.ButterKnife;
+import pub.devrel.easypermissions.EasyPermissions;
+
+public class MainActivity extends AppCompatActivity implements
+        EasyPermissions.PermissionCallbacks{
 
     private boolean doubleBackToExitPressedOnce=false;
+
+    private static final int RC_READ_SMS = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tabanim_toolbar);
         setSupportActionBar(toolbar);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.tabanim_viewpager);
-        setupViewPager(viewPager);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabanim_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        readSMSPerm();
 
     }
 
@@ -102,6 +108,43 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void readSMSPerm() {
+        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.INTERNET, Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_NETWORK_STATE};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            sendAndOpenIntent();
+        } else {
+            // Ask for both permissions
+            Log.d("else", "part");
+            EasyPermissions.requestPermissions(this, "Allow Sim Info read?",
+                    RC_READ_SMS, perms);
+        }
+    }
+
+    public void sendAndOpenIntent() {
+        ViewPager viewPager = (ViewPager) findViewById(R.id.tabanim_viewpager);
+        setupViewPager(viewPager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabanim_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+// EasyPermissions handles the request result.
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+        Log.d("", "onPermissionsGranted:" + requestCode + ":" + perms.size());
+        sendAndOpenIntent();
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+        Log.d("", "onPermissionsDenied:" + requestCode + ":" + perms.size());
+        Toast.makeText(getApplicationContext(), "Permission is Compulsory to Proceed", Toast.LENGTH_SHORT).show();
     }
 
 }
